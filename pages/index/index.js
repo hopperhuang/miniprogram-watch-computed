@@ -5,20 +5,31 @@ const obj = {
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
+    v: 1,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    // 首层属性可以被watch
+    // 首层属性被修改时可以触发computed
     number: {
       a: 1,
       b: 2
-    }
+    },
   },
   watch: {
     number() {
       console.log(this)
-      console.log('a change')
+      console.log('number change')
     },
-    // number() {
-    //   console.log('b change')
-    // }
+    hasUserInfo: {
+      handler() {
+        console.log('watched...')
+      }
+    },
+    v: {
+      handler() {
+        console.log('v')
+      },
+      immediate: true
+    }
   },
   computed: {
     c() {
@@ -96,6 +107,19 @@ Page({
         ...this.data.number,
         a: this.data.number.a + 1
       }
+    })
+  },
+  addB() {
+    // this.setData({
+    //   hasUserInfo: !this.data.hasUserInfo
+    // })
+    this.setData({
+      number: {
+        ...this.data.number,
+        b: this.data.number.b + 1
+      },
+      hasUserInfo: !this.data.hasUserInfo,
+      v: this.data.v + 1
     })
   }
 })

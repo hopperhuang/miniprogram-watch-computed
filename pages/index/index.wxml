@@ -21,6 +21,9 @@
     <text>number B:  </text>
     <text>{{number.b}}</text>
   </view>
+  <view bindtap="addB" >
+    <text>add b</text>
+  </view>
   <view>
     <text>number C:</text>
     <text>{{c}}</text>
