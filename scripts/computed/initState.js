@@ -134,19 +134,22 @@ function initComputed (computed, attachedData, binder) {
   }
 }
 
-function init (obj) {
+function init (obj, page) {
   // const { data, watch, computed } = obj
   const { data, watch } = obj
   const { reactiveData, dependencies } = initState(data)
   const binder = {
-    data: reactiveData
+    data: reactiveData,
+    __dep__: dependencies
   }
   // initComputed(computed, reactiveData, binder)
-  initWatch(watch, reactiveData, dependencies, binder)
+  // initWatch(watch, reactiveData, dependencies, binder)
   return binder
 }
 
 module.exports = {
   init,
-  initComputed
+  initComputed,
+  initWatch,
+  initState,
 }

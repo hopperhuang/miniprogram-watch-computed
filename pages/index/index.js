@@ -1,4 +1,4 @@
-const { init, initComputed } = require('../../scripts/computed/index')
+const { init, initComputed, initWatch } = require('../../scripts/computed/index')
 
 const obj = {
   data: {
@@ -13,6 +13,7 @@ const obj = {
   },
   watch: {
     number() {
+      console.log(this)
       console.log('a change')
     },
     // number() {
@@ -52,6 +53,7 @@ Page({
       value: data,
     })
     initComputed(obj.computed, this.data, this)
+    initWatch(obj.watch, this.data, o.__dep__, this)
     console.log(Object.getOwnPropertyDescriptor(this, 'data'))
     if (app.globalData.userInfo) {
       this.setData({
