@@ -32,5 +32,9 @@
     <text>number D:</text>
     <text>{{d}}</text>
   </view>
+  <view>
+    <text>v:</text>
+    <text>{{v}}</text>
+  </view>
 </view>
 

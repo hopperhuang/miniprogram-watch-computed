@@ -16,14 +16,14 @@ const obj = {
   },
   watch: {
     number() {
-      console.log(this)
+      // console.log(this)
       console.log('number change')
     },
-    hasUserInfo: {
-      handler() {
-        console.log('watched...')
-      }
-    },
+    // hasUserInfo: {
+    //   handler() {
+    //     console.log('hasUserInfo...')
+    //   }
+    // },
     v: {
       handler() {
         console.log('v')
@@ -65,7 +65,7 @@ Page({
     })
     initComputed(obj.computed, this.data, this)
     initWatch(obj.watch, this.data, o.__dep__, this)
-    console.log(Object.getOwnPropertyDescriptor(this, 'data'))
+    // console.log(Object.getOwnPropertyDescriptor(this, 'data'))
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -118,7 +118,7 @@ Page({
         ...this.data.number,
         b: this.data.number.b + 1
       },
-      hasUserInfo: !this.data.hasUserInfo,
+      // hasUserInfo: !this.data.hasUserInfo,
       v: this.data.v + 1
     })
   }
